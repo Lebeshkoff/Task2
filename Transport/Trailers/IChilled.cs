@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CargoTransportLib.Cargos;
 
 namespace CargoTransportLib.Trailers
 {
     interface IChilled
     {
+        public int Temperature { get; set; }
+
+        public GoodsType type { get; set; }
     }
 }

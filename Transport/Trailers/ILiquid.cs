@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CargoTransportLib.Cargos;
 
 namespace CargoTransportLib.Trailers
 {
     interface ILiquid
     {
+        public LiquidType Type { get; set; }
     }
 }

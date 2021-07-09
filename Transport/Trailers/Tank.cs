@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CargoTransportLib.Cargos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace CargoTransportLib.Trailers
 {
     public class Tank : ILiquid
     {
+        public LiquidType Type { get; set; }
     }
 }
