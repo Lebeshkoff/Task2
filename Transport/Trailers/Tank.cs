@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CargoTransportLib.Trailers
 {
-    public class Tank
+    public class Tank : ILiquid
     {
     }
 }

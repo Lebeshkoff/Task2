@@ -5,7 +5,7 @@ namespace CargoTransportLib.Trailers
 {
     public abstract class Semitrailer
     {
-        event Truck.ConsumptionHandler OnChange;
+        private event Truck.ConsumptionHandler OnChange;
         public readonly int carrying;
         public int Weight { get; }
         public void LoadCargo()

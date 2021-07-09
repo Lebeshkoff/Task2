@@ -9,9 +9,13 @@ namespace CargoTransportLib.Cargos
     public class Goods : Cargo
     {
         public GoodsType type;
-        public Goods(GoodsType type, )
+        public string name;
+        public Goods(GoodsType type, int storageTemperature, int weight, string name )
         {
-
+            this.type = type;
+            StorageTemperature = storageTemperature;
+            Weight = weight;
+            this.name = name;
         }
     }
 }
