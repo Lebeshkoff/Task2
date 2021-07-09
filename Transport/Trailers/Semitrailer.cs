@@ -1,5 +1,7 @@
 ﻿using System;
 using CargoTransportLib.Trucks;
+using CargoTransportLib.Cargos;
+using System.Collections.Generic;
 
 namespace CargoTransportLib.Trailers
 {
@@ -7,18 +9,35 @@ namespace CargoTransportLib.Trailers
     {
         private event Truck.ConsumptionHandler OnChange;
         public readonly int carrying;
-        public int Weight { get; }
-        public void LoadCargo()
+        public int Weight { get; private set; }
+        public List<Cargo> cargos;
+        public void LoadCargo(Cargo cargo)
         {
-            OnChange();
-            //TODO: check type of produsts & change weight
-            throw new NotImplementedException();
+            if(!CheckTypes(cargo))
+            {
+                throw new Exception("The cargos are not compatible by type or storage conditions with those already loaded");
+            }
+            else
+            {
+                cargos.Add(cargo);
+                Weight += cargo.Weight;
+                OnChange();
+            }
         }
-        public void UnloadCargo()
+        public void UnloadCargo(Cargo cargo)
         {
-            OnChange();
-            throw new NotImplementedException();
+            if (cargos.Exists(x => x == cargo))
+            {
+                cargos.Remove(cargo);
+                Weight -= cargo.Weight;
+                OnChange();
+            }
+            else
+            {
+                throw new Exception("You are trying to delete a missing cargo");
+            }
         }
+        protected abstract bool CheckTypes(Cargo cargos);
         
     }
 }
