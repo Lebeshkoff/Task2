@@ -34,5 +34,18 @@ namespace CompanyLib
             var results = GetTrailer<T>();
             return results.FindAll(x => x.carrying == carrying);            
         }
+
+        public static List<Truck> GetTrucksWithTrailerByTypeOfCargos<T>()
+        {
+            var results = new List<Truck>();
+            foreach (var truck in trucks)
+            {
+                if(truck.Semitrailer != null && truck.Semitrailer.cargos[0] is T)
+                {
+                    results.Add(truck);
+                }
+            }
+            return results;
+        }
     }
 }
