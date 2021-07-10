@@ -11,7 +11,8 @@ namespace CargoTransportLib.Trailers
         public readonly int carrying;
         public int Weight { get; private set; }
         public List<Cargo> cargos;
-        public void LoadCargo(Cargo cargo)
+
+        public virtual void LoadCargo(Cargo cargo)
         {
             if(!CheckTypes(cargo))
             {
@@ -19,22 +20,56 @@ namespace CargoTransportLib.Trailers
             }
             else
             {
-                cargos.Add(cargo);
+                if (cargo is Goods goods)
+                {
+                    var currentCargo = cargos.Find(x => x is Goods
+                    && ((Goods)x).name == goods.name
+                    && ((Goods)x).type == goods.type
+                    && ((Goods)x).StorageTemperature == goods.StorageTemperature);
+                    cargos.Remove(currentCargo);
+                    cargos.Add(new Goods(goods.type, goods.StorageTemperature, goods.Weight + currentCargo.Weight, goods.name));
+                }
+                if (cargo is Liquid liquid)
+                {
+                    var currentCargo = cargos.Find(x => x is Liquid
+                    && ((Liquid)x).type == liquid.type);
+                    cargos.Remove(currentCargo);
+                    cargos.Add(new Liquid(liquid.type, liquid.Weight + currentCargo.Weight));
+                }
                 Weight += cargo.Weight;
                 OnChange();
             }
         }
+
         public void UnloadCargo(Cargo cargo)
         {
-            if (cargos.Exists(x => x == cargo))
+            if (cargos.Exists(x => x.GetType() == cargo.GetType()))
             {
-                cargos.Remove(cargo);
-                Weight -= cargo.Weight;
-                OnChange();
+                var currentCargo = cargos.Find(x => x.GetType() == cargo.GetType());
+                if (cargo.Weight <= currentCargo.Weight)
+                {
+                    cargos.Remove(currentCargo);
+                    if (cargo.Weight != currentCargo.Weight)
+                    {
+                        if (cargo is Liquid liquid)
+                        {
+                            cargos.Add(new Liquid(liquid.type, currentCargo.Weight - cargo.Weight));
+                        }
+                        if (cargo is Goods goods)
+                        {
+                            cargos.Add(new Goods(goods.type,
+                                cargo.StorageTemperature,
+                                currentCargo.Weight - cargo.Weight,
+                                goods.name));
+                        }
+                    }
+                    Weight -= cargo.Weight;
+                    OnChange();
+                }
             }
             else
             {
-                throw new Exception("You are trying to delete a missing cargo");
+                throw new Exception("You are trying to unload a missing cargo");
             }
         }
         protected abstract bool CheckTypes(Cargo cargos);

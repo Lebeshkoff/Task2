@@ -8,5 +8,6 @@ namespace CargoTransportLib.Trailers
 {
     public class Titl
     {
+
     }
 }

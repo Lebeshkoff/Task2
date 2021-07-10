@@ -6,6 +6,6 @@ namespace CargoTransportLib.Trailers
     {
         public int Temperature { get; set; }
 
-        public GoodsType type { get; set; }
+        public GoodsType Type { get; set; }
     }
 }

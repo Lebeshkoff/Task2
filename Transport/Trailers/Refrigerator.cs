@@ -10,6 +10,6 @@ namespace CargoTransportLib.Trailers
     public class Refrigerator : IChilled
     {
         public int Temperature { get; set; }
-        public GoodsType type { get; set; }
+        public GoodsType Type { get; set; }
     }
 }
