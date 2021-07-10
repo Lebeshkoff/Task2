@@ -26,6 +26,11 @@ namespace CargoTransportLib.Trailers
                     && ((Goods)x).name == goods.name
                     && ((Goods)x).type == goods.type
                     && ((Goods)x).StorageTemperature == goods.StorageTemperature);
+                    if (currentCargo.StorageTemperature != cargo.StorageTemperature
+                        && goods.type != ((Goods)currentCargo).type)
+                    {
+                        throw new Exception("Type or temperature does not match.");
+                    }
                     cargos.Remove(currentCargo);
                     cargos.Add(new Goods(goods.type, goods.StorageTemperature, goods.Weight + currentCargo.Weight, goods.name));
                 }
@@ -33,6 +38,10 @@ namespace CargoTransportLib.Trailers
                 {
                     var currentCargo = cargos.Find(x => x is Liquid
                     && ((Liquid)x).type == liquid.type);
+                    if (((Liquid)currentCargo).type != liquid.type)
+                    {
+                        throw new Exception("The type of liquid does not match.");
+                    }
                     cargos.Remove(currentCargo);
                     cargos.Add(new Liquid(liquid.type, liquid.Weight + currentCargo.Weight));
                 }

@@ -15,7 +15,10 @@ namespace CargoTransportLib.Trailers
         }
         public override void LoadCargo(Cargo cargo)
         {
-            //TODO
+            if(cargo.StorageTemperature < 30)
+            {
+                throw new Exception("Use refrigerator for this type of goods");
+            }
             base.LoadCargo(cargo);
         }
         protected override bool CheckTypes(Cargo cargos)
