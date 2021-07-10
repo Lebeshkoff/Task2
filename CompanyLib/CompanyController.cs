@@ -27,5 +27,12 @@ namespace CompanyLib
             }
             return results;
         }
+
+        public static List<T> GetSameTrailer<T>(int carrying)
+            where T : Semitrailer
+        {
+            var results = GetTrailer<T>();
+            return results.FindAll(x => x.carrying == carrying);            
+        }
     }
 }
