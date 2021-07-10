@@ -47,5 +47,18 @@ namespace CompanyLib
             }
             return results;
         }
+
+        public static List<Truck> GetTrucksWithTrailerWhoMayLoad()
+        {
+            var results = new List<Truck>();
+            foreach (var truck in trucks)
+            {
+                if (truck.Semitrailer != null && truck.Semitrailer.carrying - truck.Semitrailer.Weight > 0)
+                {
+                    results.Add(truck);
+                }
+            }
+            return results;
+        }
     }
 }
