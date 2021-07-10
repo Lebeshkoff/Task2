@@ -9,11 +9,9 @@ namespace CargoTransportLib.Trucks
 {
     public class Volvo : Truck
     {
-        public Volvo(Semitrailer semitrailer, int power)
+        public Volvo(int power)
         {
-            this.Power = power;
-            this.Semitrailer = semitrailer;
-            this.Сonsumption = semitrailer.Weight * 0.01;
+            Power = power;
         }
     }
 }

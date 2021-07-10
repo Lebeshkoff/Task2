@@ -2,13 +2,13 @@
 using CargoTransportLib.Trucks;
 using CargoTransportLib.Cargos;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace CargoTransportLib.Trailers
 {
     public abstract class Semitrailer
     {
-        private event Truck.ConsumptionHandler OnChange;
-        public readonly int carrying;
+        public int carrying;
         public int Weight { get; private set; }
         public List<Cargo> cargos;
 
@@ -37,7 +37,6 @@ namespace CargoTransportLib.Trailers
                     cargos.Add(new Liquid(liquid.type, liquid.Weight + currentCargo.Weight));
                 }
                 Weight += cargo.Weight;
-                OnChange();
             }
         }
 
@@ -64,7 +63,10 @@ namespace CargoTransportLib.Trailers
                         }
                     }
                     Weight -= cargo.Weight;
-                    OnChange();
+                }
+                else
+                {
+                    throw new Exception("You are trying to unload more than available");
                 }
             }
             else

@@ -9,14 +9,27 @@ namespace CargoTransportLib.Trucks
 {
     public abstract class Truck
     {
-        public delegate void ConsumptionHandler();
-        public Semitrailer Semitrailer { get; set; }
-        public double Сonsumption { get; set; }
-        public int Power { get; protected set; }
+        public Semitrailer Semitrailer { get; private set; }
+        public double Сonsumption { get; private set; }
+        public static int Power { get; protected set; }
 
-        private void UpdateConsumption()
+        public void UpdateConsumption()
         {
-            this.Сonsumption = Power * 0.01 + Semitrailer.Weight * 0.01;
+            Сonsumption = Power * 0.01 + Semitrailer.Weight * 0.01;
+        }
+
+        public void HookTrailer(Semitrailer trailer)
+        {
+            Semitrailer = trailer;
+            UpdateConsumption();
+        }
+
+        public Semitrailer UnHookTrailer()
+        {
+            var result = Semitrailer;
+            Semitrailer = null;
+            UpdateConsumption();
+            return result;
         }
     }
 }
