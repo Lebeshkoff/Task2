@@ -60,5 +60,18 @@ namespace CompanyLib
             }
             return results;
         }
+
+        public static List<Truck> GetTrucksWithEmptyTrailer()
+        {
+            var results = new List<Truck>();
+            foreach (var truck in trucks)
+            {
+                if (truck.Semitrailer != null && truck.Semitrailer.cargos.Count == 0)
+                {
+                    results.Add(truck);
+                }
+            }
+            return results;
+        }
     }
 }
