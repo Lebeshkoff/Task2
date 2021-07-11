@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CargoTransportLib", "Transp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyLib", "CompanyLib\CompanyLib.csproj", "{E76617F6-992B-47F7-8CB6-97A28DACDAF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serializer", "Serializer\Serializer.csproj", "{07AADB21-1858-4C62-B2C8-5275D0FC08F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E76617F6-992B-47F7-8CB6-97A28DACDAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E76617F6-992B-47F7-8CB6-97A28DACDAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E76617F6-992B-47F7-8CB6-97A28DACDAF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07AADB21-1858-4C62-B2C8-5275D0FC08F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07AADB21-1858-4C62-B2C8-5275D0FC08F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07AADB21-1858-4C62-B2C8-5275D0FC08F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07AADB21-1858-4C62-B2C8-5275D0FC08F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
