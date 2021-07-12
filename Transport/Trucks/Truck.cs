@@ -9,7 +9,7 @@ using Serializer;
 
 namespace CargoTransportLib.Trucks
 {
-    public abstract class Truck
+    public abstract class Truck : ISerializer
     {
         public Semitrailer Semitrailer { get; private set; }
         public double Сonsumption { get; private set; }
@@ -33,5 +33,8 @@ namespace CargoTransportLib.Trucks
             UpdateConsumption();
             return result;
         }
+
+        public abstract void Serialize(XmlWriter xmlWriter);
+        public abstract object Deserialize();
     }
 }

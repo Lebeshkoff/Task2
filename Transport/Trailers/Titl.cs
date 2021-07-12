@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
@@ -13,6 +14,12 @@ namespace CargoTransportLib.Trailers
         {
             this.carrying = carrying;
         }
+
+        public override object Deserialize()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void LoadCargo(Cargo cargo)
         {
             if(cargo.StorageTemperature < 30)
@@ -21,6 +28,12 @@ namespace CargoTransportLib.Trailers
             }
             base.LoadCargo(cargo);
         }
+
+        public override void Serialize(XmlWriter xmlWriter)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override bool CheckTypes(Cargo cargos)
         {
             throw new NotImplementedException(); //TODO

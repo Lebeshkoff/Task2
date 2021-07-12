@@ -27,7 +27,8 @@ namespace CargoTransportLib.Trailers
 
         protected override bool CheckTypes(Cargo cargos)
         {
-            throw new NotImplementedException(); //TODO
+            return true;
+            //throw new NotImplementedException(); //TODO
         }
 
         public override void Serialize(XmlWriter xmlWriter)
@@ -42,6 +43,7 @@ namespace CargoTransportLib.Trailers
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("Carrying");
             xmlWriter.WriteValue(carrying);
+            xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
         }
 

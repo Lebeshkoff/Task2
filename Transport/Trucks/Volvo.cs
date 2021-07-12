@@ -1,4 +1,5 @@
 ﻿using Serializer;
+using System.Linq;
 using System.Xml;
 
 namespace CargoTransportLib.Trucks
@@ -10,17 +11,16 @@ namespace CargoTransportLib.Trucks
             Power = power;
         }
 
-        public object Deserialize()
+        public override object Deserialize()
         {
             throw new System.NotImplementedException();
         }
 
-        public void Serialize(XmlWriter xmlWriter)
+        public override void Serialize(XmlWriter xmlWriter)
         {
             xmlWriter.WriteStartElement("Truck");
             xmlWriter.WriteAttributeString("Model", GetType().Name);
-            xmlWriter.WriteEndAttribute();
-            if (typeof(ISerializer).IsAssignableTo(Semitrailer.GetType()))
+            if (typeof(ISerializer) == Semitrailer.GetType().GetInterfaces().ToList().Find(x => x == typeof(ISerializer)))
             {
                 Semitrailer.Serialize(xmlWriter);
             }

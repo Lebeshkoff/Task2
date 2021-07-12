@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
@@ -26,6 +27,16 @@ namespace CargoTransportLib.Trailers
         protected override bool CheckTypes(Cargo cargos)
         {
             //todo
+            throw new NotImplementedException();
+        }
+
+        public override void Serialize(XmlWriter xmlWriter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object Deserialize()
+        {
             throw new NotImplementedException();
         }
     }

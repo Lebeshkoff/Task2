@@ -12,10 +12,16 @@ namespace CargoTransportLib.Trailers
     {
         public int carrying;
         public int Weight { get; private set; }
-        public List<Cargo> cargos;
+        public List<Cargo> cargos = new List<Cargo>();
 
         public virtual void LoadCargo(Cargo cargo)
         {
+            if(cargos.Count == 0)
+            {
+                cargos.Add(cargo);
+                Weight += cargo.Weight;
+                return;
+            }
             if(!CheckTypes(cargo))
             {
                 throw new Exception("The cargos are not compatible by type or storage conditions with those already loaded");

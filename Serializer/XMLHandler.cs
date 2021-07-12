@@ -19,7 +19,8 @@ namespace Serializer
 
         public void Serialize(object obj)
         {
-            if(typeof(ISerializer).IsAssignableTo(obj.GetType()))
+            //var g = obj.GetType().GetInterfaces().ToList();
+            if (typeof(ISerializer) == obj.GetType().GetInterfaces().ToList().Find(x => x == typeof(ISerializer)))
             {
                 ((ISerializer)obj).Serialize(writer);
                 writer.WriteEndDocument();
@@ -27,7 +28,7 @@ namespace Serializer
             }
             else
             {
-                throw new Exception("Class" + obj.GetType().Name + " non serializable.");
+                throw new Exception("Class " + obj.GetType().Name + " non serializable.");
             }
         }
     }
