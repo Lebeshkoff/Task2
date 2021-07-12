@@ -1,9 +1,7 @@
 ﻿using CargoTransportLib.Cargos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Serializer;
+using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
@@ -30,6 +28,26 @@ namespace CargoTransportLib.Trailers
         protected override bool CheckTypes(Cargo cargos)
         {
             throw new NotImplementedException(); //TODO
+        }
+
+        public override void Serialize(XmlWriter xmlWriter)
+        {
+            xmlWriter.WriteStartElement("Semitrailer");
+            xmlWriter.WriteAttributeString("Type", GetType().Name);
+            xmlWriter.WriteStartElement("Temperature");
+            xmlWriter.WriteValue(Temperature);
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("Weight");
+            xmlWriter.WriteValue(Weight);
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("Carrying");
+            xmlWriter.WriteValue(carrying);
+            xmlWriter.WriteEndElement();
+        }
+
+        public override object Deserialize()
+        {
+            throw new NotImplementedException();
         }
     }
 }

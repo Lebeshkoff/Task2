@@ -3,10 +3,12 @@ using CargoTransportLib.Trucks;
 using CargoTransportLib.Cargos;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Serializer;
+using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
-    public abstract class Semitrailer
+    public abstract class Semitrailer : ISerializer
     {
         public int carrying;
         public int Weight { get; private set; }
@@ -84,6 +86,7 @@ namespace CargoTransportLib.Trailers
             }
         }
         protected abstract bool CheckTypes(Cargo cargos);
-        
+        public abstract void Serialize(XmlWriter xmlWriter);
+        public abstract object Deserialize();
     }
 }

@@ -14,6 +14,7 @@ namespace Serializer
         public XMLHandler(string path)
         {
             writer = XmlWriter.Create(path);
+            writer.WriteStartDocument();
         }
 
         public void Serialize(object obj)
@@ -21,6 +22,7 @@ namespace Serializer
             if(typeof(ISerializer).IsAssignableTo(obj.GetType()))
             {
                 ((ISerializer)obj).Serialize(writer);
+                writer.WriteEndDocument();
                 writer.Close();
             }
             else
