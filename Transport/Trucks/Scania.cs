@@ -31,6 +31,7 @@ namespace CargoTransportLib.Trucks
             xmlWriter.WriteStartElement("Power");
             xmlWriter.WriteValue(Power);
             xmlWriter.WriteEndElement();
+            xmlWriter.WriteEndElement();
         }
     }
 }

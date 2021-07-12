@@ -26,7 +26,7 @@ namespace CargoTransportLib.Cargos
         {
             xmlWriter.WriteStartElement("Liquid");
             xmlWriter.WriteStartElement("Type");
-            xmlWriter.WriteValue(type);
+            xmlWriter.WriteValue(type.ToString());
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("Weight");
             xmlWriter.WriteValue(Weight);

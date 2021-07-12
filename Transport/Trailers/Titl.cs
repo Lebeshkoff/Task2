@@ -31,7 +31,21 @@ namespace CargoTransportLib.Trailers
 
         public override void Serialize(XmlWriter xmlWriter)
         {
-            throw new NotImplementedException();
+            xmlWriter.WriteStartElement("Semitrailer");
+            xmlWriter.WriteAttributeString("Type", GetType().Name);
+            xmlWriter.WriteStartElement("Weight");
+            xmlWriter.WriteValue(Weight);
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("Carrying");
+            xmlWriter.WriteValue(carrying);
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("Cargos");
+            foreach (var cargo in cargos)
+            {
+                cargo.Serialize(xmlWriter);
+            }
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteEndElement();
         }
 
         protected override bool CheckTypes(Cargo cargos)

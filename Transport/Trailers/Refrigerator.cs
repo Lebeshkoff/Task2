@@ -44,6 +44,12 @@ namespace CargoTransportLib.Trailers
             xmlWriter.WriteStartElement("Carrying");
             xmlWriter.WriteValue(carrying);
             xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("Cargos");
+            foreach (var cargo in cargos)
+            {
+                cargo.Serialize(xmlWriter);
+            }
+            xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
         }
 
