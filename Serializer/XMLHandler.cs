@@ -31,5 +31,20 @@ namespace Serializer
                 throw new Exception("Class " + obj.GetType().Name + " non serializable.");
             }
         }
+        public object Deserialize(string path)
+        {
+            var a = XmlReader.Create(path);
+            while (a.Read())
+            {
+                var s = a.NodeType;
+                var g = a.ReadAttributeValue();
+                if(a.AttributeCount != 0)
+                {
+                    var v = a.GetAttribute(0);
+                }
+            }
+            var f = 1;
+            throw new NotSupportedException();
+        }
     }
 }

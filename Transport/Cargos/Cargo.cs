@@ -13,7 +13,7 @@ namespace CargoTransportLib.Cargos
         public int Weight { get; protected set; }
         public int StorageTemperature { get; protected set; }
 
-        public abstract object Deserialize();
+        public abstract object Deserialize(XmlReader xmlReader);
         public abstract void Serialize(XmlWriter xmlWriter);
     }
 }

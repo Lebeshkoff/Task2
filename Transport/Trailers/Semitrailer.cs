@@ -93,6 +93,6 @@ namespace CargoTransportLib.Trailers
         }
         protected abstract bool CheckTypes(Cargo cargos);
         public abstract void Serialize(XmlWriter xmlWriter);
-        public abstract object Deserialize();
+        public abstract object Deserialize(XmlReader xmlReader);
     }
 }

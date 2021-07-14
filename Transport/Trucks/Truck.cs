@@ -35,6 +35,6 @@ namespace CargoTransportLib.Trucks
         }
 
         public abstract void Serialize(XmlWriter xmlWriter);
-        public abstract object Deserialize();
+        public abstract object Deserialize(XmlReader xmlReader);
     }
 }

@@ -17,7 +17,7 @@ namespace CargoTransportLib.Cargos
             this.type = type;
         }
 
-        public override object Deserialize()
+        public override object Deserialize(XmlReader xmlReader)
         {
             throw new NotImplementedException();
         }
