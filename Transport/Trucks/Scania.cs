@@ -11,7 +11,7 @@ namespace CargoTransportLib.Trucks
             Power = power;
         }
 
-        public override object Deserialize(XmlReader xmlReader)
+        public override void Deserialize(XmlReader xmlReader)
         {
             throw new System.NotImplementedException();
         }

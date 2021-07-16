@@ -1,19 +1,34 @@
 ﻿using Serializer;
 using System.Linq;
 using System.Xml;
+using CargoTransportLib.Trailers;
 
 namespace CargoTransportLib.Trucks
 {
-    public class Volvo : Truck, ISerializer
+    public class Volvo : Truck
     {
-        public Volvo(int power)
+        public Volvo(int power = 0)
         {
             Power = power;
         }
 
-        public override object Deserialize(XmlReader xmlReader)
+        public override void Deserialize(XmlReader xmlReader)
         {
-            throw new System.NotImplementedException();
+            while (xmlReader.Read())
+            {
+                if (xmlReader.Name == "Semitrailer")
+                {
+                    switch (xmlReader.GetAttribute(0))
+                    {
+                        case "Refrigerator":
+                            Semitrailer = (Refrigerator)new Refrigerator().Deserialize(xmlReader);
+                            break;
+                            
+                        default: break;
+                    }
+                }
+            }
+            return new Volvo(Power);
         }
 
         public override void Serialize(XmlWriter xmlWriter)

@@ -37,6 +37,7 @@ namespace Serializer
             while (a.Read())
             {
                 var s = a.NodeType;
+                var n = a.Name;
                 var g = a.ReadAttributeValue();
                 if(a.AttributeCount != 0)
                 {

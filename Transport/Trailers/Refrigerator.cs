@@ -10,10 +10,11 @@ namespace CargoTransportLib.Trailers
         public int Temperature { get; set; }
         public GoodsType Type { get; set; }
 
-        public Refrigerator(int carrying)
+        public Refrigerator(int carrying = 0)
         {
             this.carrying = carrying;
         }
+
 
         public override void LoadCargo(Cargo cargo)
         {
@@ -53,7 +54,7 @@ namespace CargoTransportLib.Trailers
             xmlWriter.WriteEndElement();
         }
 
-        public override object Deserialize(XmlReader xmlReader)
+        public override void Deserialize(XmlReader xmlReader)
         {
             throw new NotImplementedException();
         }

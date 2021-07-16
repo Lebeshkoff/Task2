@@ -46,7 +46,7 @@ namespace CargoTransportLib.Trailers
             xmlWriter.WriteEndElement();
         }
 
-        public override object Deserialize(XmlReader xmlReader)
+        public override void Deserialize(XmlReader xmlReader)
         {
             throw new NotImplementedException();
         }

@@ -15,7 +15,7 @@ namespace CargoTransportLib.Trailers
             this.carrying = carrying;
         }
 
-        public override object Deserialize(XmlReader xmlReader)
+        public override void Deserialize(XmlReader xmlReader)
         {
             throw new NotImplementedException();
         }

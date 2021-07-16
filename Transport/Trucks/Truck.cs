@@ -11,7 +11,7 @@ namespace CargoTransportLib.Trucks
 {
     public abstract class Truck : ISerializer
     {
-        public Semitrailer Semitrailer { get; private set; }
+        public Semitrailer Semitrailer { get; protected set; }
         public double Сonsumption { get; private set; }
         public static int Power { get; protected set; }
 
@@ -35,6 +35,6 @@ namespace CargoTransportLib.Trucks
         }
 
         public abstract void Serialize(XmlWriter xmlWriter);
-        public abstract object Deserialize(XmlReader xmlReader);
+        public abstract void Deserialize(XmlReader xmlReader);
     }
 }

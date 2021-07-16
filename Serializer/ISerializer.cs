@@ -6,7 +6,7 @@ namespace Serializer
     {
         public void Serialize(XmlWriter xmlWriter);
 
-        public object Deserialize(XmlReader xmlReader);
+        public void Deserialize(XmlReader xmlReader);
 
     }
 }
