@@ -21,14 +21,33 @@ namespace CargoTransportLib.Trucks
                     switch (xmlReader.GetAttribute(0))
                     {
                         case "Refrigerator":
-                            Semitrailer = (Refrigerator)new Refrigerator().Deserialize(xmlReader);
+                            Semitrailer = new Refrigerator();
+                            Semitrailer.Deserialize(xmlReader);
                             break;
-                            
-                        default: break;
+
+                        case "Tank":
+                            Semitrailer = new Tank();
+                            Semitrailer.Deserialize(xmlReader);
+                            break;
+
+                        case "Tilt":
+                            Semitrailer = new Titl();
+                            Semitrailer.Deserialize(xmlReader);
+                            break;
+
+                        default: 
+                            break;
                     }
                 }
+                if(xmlReader.Name == "Consumption")
+                {
+                    Сonsumption = double.Parse(xmlReader.Value);
+                }
+                if(xmlReader.Name == "Power")
+                {
+                    Power = int.Parse(xmlReader.Value);
+                }
             }
-            return new Volvo(Power);
         }
 
         public override void Serialize(XmlWriter xmlWriter)

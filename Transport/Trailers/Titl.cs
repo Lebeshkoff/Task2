@@ -10,7 +10,7 @@ namespace CargoTransportLib.Trailers
 {
     public class Titl : Semitrailer
     {
-        public Titl(int carrying)
+        public Titl(int carrying = 0)
         {
             this.carrying = carrying;
         }

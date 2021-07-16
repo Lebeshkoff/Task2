@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using CargoTransportLib.Trucks;
+
 
 namespace Serializer
 {
@@ -34,8 +36,14 @@ namespace Serializer
         public object Deserialize(string path)
         {
             var a = XmlReader.Create(path);
+
             while (a.Read())
             {
+                if (a.Name == "Truck")
+                {
+                    var k = new Volvo();
+                    k.Deserialize(a);
+                }
                 var s = a.NodeType;
                 var n = a.Name;
                 var g = a.ReadAttributeValue();

@@ -12,7 +12,7 @@ namespace CargoTransportLib.Trucks
     public abstract class Truck : ISerializer
     {
         public Semitrailer Semitrailer { get; protected set; }
-        public double Сonsumption { get; private set; }
+        public double Сonsumption { get; protected set; }
         public static int Power { get; protected set; }
 
         public void UpdateConsumption()

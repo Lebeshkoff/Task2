@@ -12,7 +12,7 @@ namespace CargoTransportLib.Trailers
     {
         public LiquidType Type { get; set; }
 
-        public Tank(int carrying)
+        public Tank(int carrying = 0)
         {
             this.carrying = carrying;
         }
