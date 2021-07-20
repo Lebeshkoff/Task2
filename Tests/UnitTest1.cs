@@ -13,7 +13,7 @@ namespace Tests
         [Fact]
         public void Test1()
         {
-            var xml = new XMLHandler("xml.xml");
+            var xml = new XMLSerializer("xml.xml");
             var truck = new Volvo(220);
             var trailer = new Refrigerator(200);
             var goods = new Goods(GoodsType.Eat, -12, 10, "Fish");
@@ -24,7 +24,7 @@ namespace Tests
             //trailer.LoadCargo(goods2);
             truck.HookTrailer(trailer);
             xml.Serialize(truck);
-            xml.Deserialize("xml.xml");
+            //xml.Deserialize("xml.xml");
         }
     }
 }

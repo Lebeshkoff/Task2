@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Serializer\Serializer.csproj" />
     <ProjectReference Include="..\Transport\CargoTransportLib.csproj" />
   </ItemGroup>
 
