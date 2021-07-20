@@ -11,7 +11,7 @@ namespace CargoTransportLib.Trailers
     public abstract class Semitrailer : ISerializer
     {
         public int carrying;
-        public int Weight { get; private set; }
+        public int Weight { get; protected set; }
         public List<Cargo> cargos = new List<Cargo>();
 
         public virtual void LoadCargo(Cargo cargo)

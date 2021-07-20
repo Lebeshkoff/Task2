@@ -16,10 +16,41 @@ namespace CargoTransportLib.Cargos
             Weight = weight;
             this.type = type;
         }
+        public Liquid() { }
 
         public override void Deserialize(XmlReader xmlReader)
         {
-            throw new NotImplementedException();
+            while (xmlReader.Read())
+            {
+                if (xmlReader.Name == "Type")
+                {
+                    switch (xmlReader.Value)
+                    {
+                        case "Oil":
+                            type = LiquidType.Oil;
+                            break;
+                        case "Petrol92":
+                            type = LiquidType.Petrol92;
+                            break;
+                        case "Petrol95":
+                            type = LiquidType.Petrol95;
+                            break;
+                        case "Petrol100":
+                            type = LiquidType.Petrol100;
+                            break;
+                        case "PetrolE85":
+                            type = LiquidType.PetrolE85;
+                            break;
+                        case "Diesel":
+                            type = LiquidType.Diesel;
+                            break;
+                    }
+                }
+                if (xmlReader.Name == "Weight")
+                {
+                    Weight = int.Parse(xmlReader.Value);
+                }
+            }
         }
 
         public override void Serialize(XmlWriter xmlWriter)

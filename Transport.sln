@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyLib", "CompanyLib\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serializer", "Serializer\Serializer.csproj", "{07AADB21-1858-4C62-B2C8-5275D0FC08F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{261F8CC5-3F64-4887-A0D7-5DD849C2B60D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{261F8CC5-3F64-4887-A0D7-5DD849C2B60D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deserializer", "Deserializer\Deserializer.csproj", "{32007F93-ECC2-4E49-8006-ADA150BAFC23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{261F8CC5-3F64-4887-A0D7-5DD849C2B60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{261F8CC5-3F64-4887-A0D7-5DD849C2B60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{261F8CC5-3F64-4887-A0D7-5DD849C2B60D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32007F93-ECC2-4E49-8006-ADA150BAFC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32007F93-ECC2-4E49-8006-ADA150BAFC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32007F93-ECC2-4E49-8006-ADA150BAFC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32007F93-ECC2-4E49-8006-ADA150BAFC23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

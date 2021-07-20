@@ -48,7 +48,23 @@ namespace CargoTransportLib.Trailers
 
         public override void Deserialize(XmlReader xmlReader)
         {
-            throw new NotImplementedException();
+            while (xmlReader.Read())
+            {
+                if (xmlReader.Name == "Liquid")
+                {
+                    var liquid = new Liquid();
+                    liquid.Deserialize(xmlReader);
+                    cargos.Add(liquid);
+                }
+                if (xmlReader.Name == "Weight")
+                {
+                    Weight = int.Parse(xmlReader.Value);
+                }
+                if (xmlReader.Name == "Carrying")
+                {
+                    carrying = int.Parse(xmlReader.Value);
+                }
+            }
         }
     }
 }

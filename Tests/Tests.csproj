@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CompanyLib\CompanyLib.csproj" />
+    <ProjectReference Include="..\Deserializer\Deserializer.csproj" />
     <ProjectReference Include="..\Serializer\Serializer.csproj" />
     <ProjectReference Include="..\Transport\CargoTransportLib.csproj" />
   </ItemGroup>

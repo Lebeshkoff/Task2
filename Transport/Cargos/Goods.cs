@@ -11,17 +11,47 @@ namespace CargoTransportLib.Cargos
     {
         public GoodsType type;
         public string name;
-        public Goods(GoodsType type, int storageTemperature, int weight, string name )
+        public Goods(GoodsType type, int storageTemperature, int weight, string name)
         {
             this.type = type;
             StorageTemperature = storageTemperature;
             Weight = weight;
             this.name = name;
         }
+        public Goods() { }
 
         public override void Deserialize(XmlReader xmlReader)
         {
-            throw new NotImplementedException();
+            while (xmlReader.Read())
+            {
+                if (xmlReader.Name == "Type")
+                {
+                    switch(xmlReader.Value)
+                    {
+                        case "Eat":
+                            type = GoodsType.Eat;
+                            break;
+                        case "Chemistry":
+                            type = GoodsType.Chemistry;
+                            break;
+                        case "Technique":
+                            type = GoodsType.Technique;
+                            break;
+                    }
+                }
+                if (xmlReader.Name == "Name")
+                {
+                    name = xmlReader.Value;
+                }
+                if (xmlReader.Name == "StorageTemperature")
+                {
+                    StorageTemperature = int.Parse(xmlReader.Value);
+                }
+                if (xmlReader.Name == "Weight")
+                {
+                    Weight = int.Parse(xmlReader.Value);
+                }
+            }
         }
 
         public override void Serialize(XmlWriter xmlWriter)

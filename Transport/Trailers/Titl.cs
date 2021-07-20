@@ -17,7 +17,23 @@ namespace CargoTransportLib.Trailers
 
         public override void Deserialize(XmlReader xmlReader)
         {
-            throw new NotImplementedException();
+            while (xmlReader.Read())
+            {
+                if (xmlReader.Name == "Goods")
+                {
+                    var goods = new Goods();
+                    goods.Deserialize(xmlReader);
+                    cargos.Add(goods);
+                }
+                if (xmlReader.Name == "Weight")
+                {
+                    Weight = int.Parse(xmlReader.Value);
+                }
+                if (xmlReader.Name == "Carrying")
+                {
+                    carrying = int.Parse(xmlReader.Value);
+                }
+            }
         }
 
         public override void LoadCargo(Cargo cargo)
