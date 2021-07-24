@@ -97,7 +97,6 @@ namespace CargoTransportLib.Trailers
                 throw new Exception("You are trying to unload a missing cargo");
             }
         }
-        protected abstract bool CheckTypes(Cargo cargos);
         public abstract void Serialize(XmlWriter xmlWriter);
         public abstract void Deserialize(XmlReader xmlReader);
     }

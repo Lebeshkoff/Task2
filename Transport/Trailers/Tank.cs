@@ -24,11 +24,6 @@ namespace CargoTransportLib.Trailers
             }
             base.LoadCargo(cargo);
         }
-        protected override bool CheckTypes(Cargo cargos)
-        {
-            //todo
-            throw new NotImplementedException();
-        }
 
         public override void Serialize(XmlWriter xmlWriter)
         {

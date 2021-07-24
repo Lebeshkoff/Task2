@@ -26,12 +26,6 @@ namespace CargoTransportLib.Trailers
             base.LoadCargo(cargo);
         }
 
-        protected override bool CheckTypes(Cargo cargos)
-        {
-            return true;
-            //throw new NotImplementedException(); //TODO
-        }
-
         public override void Serialize(XmlWriter xmlWriter)
         {
             xmlWriter.WriteStartElement("Semitrailer");
