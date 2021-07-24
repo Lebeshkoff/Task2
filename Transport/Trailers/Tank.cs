@@ -64,6 +64,10 @@ namespace CargoTransportLib.Trailers
                 {
                     carrying = int.Parse(xmlReader.Value);
                 }
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Semitrailer")
+                {
+                    break;
+                }
             }
         }
     }

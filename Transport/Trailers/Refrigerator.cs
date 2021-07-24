@@ -76,6 +76,10 @@ namespace CargoTransportLib.Trailers
                 {
                     Temperature = int.Parse(xmlReader.Value);
                 }
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Semitrailer")
+                {
+                    break;
+                }
             }
         }
     }

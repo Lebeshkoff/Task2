@@ -30,13 +30,6 @@ namespace CargoTransportLib.Trucks
                             Semitrailer.Deserialize(xmlReader);
                             break;
 
-                        case "Tilt":
-                            Semitrailer = new Titl();
-                            Semitrailer.Deserialize(xmlReader);
-                            break;
-
-                        default: 
-                            break;
                     }
                 }
                 if(xmlReader.Name == "Consumption")
@@ -46,6 +39,10 @@ namespace CargoTransportLib.Trucks
                 if(xmlReader.Name == "Power")
                 {
                     Power = int.Parse(xmlReader.Value);
+                }
+                if(xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Truck")
+                {
+                    break;
                 }
             }
         }

@@ -51,6 +51,10 @@ namespace CargoTransportLib.Cargos
                 {
                     Weight = int.Parse(xmlReader.Value);
                 }
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Goods")
+                {
+                    break;
+                }
             }
         }
 
