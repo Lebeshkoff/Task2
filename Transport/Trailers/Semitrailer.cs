@@ -16,15 +16,11 @@ namespace CargoTransportLib.Trailers
 
         public virtual void LoadCargo(Cargo cargo)
         {
-            if(cargos.Count == 0)
+            if (cargos.Count == 0)
             {
                 cargos.Add(cargo);
                 Weight += cargo.Weight;
                 return;
-            }
-            if(!CheckTypes(cargo))
-            {
-                throw new Exception("The cargos are not compatible by type or storage conditions with those already loaded");
             }
             else
             {
@@ -34,19 +30,29 @@ namespace CargoTransportLib.Trailers
                     && ((Goods)x).name == goods.name
                     && ((Goods)x).type == goods.type
                     && ((Goods)x).StorageTemperature == goods.StorageTemperature);
-                    if (currentCargo.StorageTemperature != cargo.StorageTemperature
-                        && goods.type != ((Goods)currentCargo).type)
+
+                    if (currentCargo != null)
                     {
-                        throw new Exception("Type or temperature does not match.");
+                        cargos.Remove(currentCargo);
+                        cargos.Add(new Goods(goods.type, goods.StorageTemperature, goods.Weight + currentCargo.Weight, goods.name));
                     }
-                    cargos.Remove(currentCargo);
-                    cargos.Add(new Goods(goods.type, goods.StorageTemperature, goods.Weight + currentCargo.Weight, goods.name));
+                    else
+                    {
+                        if (goods.type == ((Goods)cargos[0]).type && cargos[0].StorageTemperature == goods.StorageTemperature)
+                        {
+                            cargos.Add(goods);
+                        }
+                        else
+                        {
+                            throw new Exception("Invalid types or different storage temperature");
+                        }
+                    }
                 }
                 if (cargo is Liquid liquid)
                 {
                     var currentCargo = cargos.Find(x => x is Liquid
                     && ((Liquid)x).type == liquid.type);
-                    if (((Liquid)currentCargo).type != liquid.type)
+                    if (((Liquid)currentCargo).type != liquid.type || currentCargo == null)
                     {
                         throw new Exception("The type of liquid does not match.");
                     }
