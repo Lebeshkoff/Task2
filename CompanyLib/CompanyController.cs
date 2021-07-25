@@ -25,6 +25,24 @@ namespace CompanyLib
         public CompanyController() { }
 
         /// <summary>
+        /// Add truck to company
+        /// </summary>
+        /// <param name="truck">Truck</param>
+        public void AddTruck(Truck truck)
+        {
+            trucks.Add(truck);
+        }
+
+        /// <summary>
+        /// Add semitrailer to company
+        /// </summary>
+        /// <param name="semitrailer">Trailer</param>
+        public void AddTrailer(Semitrailer semitrailer)
+        {
+            semitrailers.Add(semitrailer);
+        }
+
+        /// <summary>
         /// Loaв trailer which the trailer is attached
         /// </summary>
         /// <param name="truck">Truck</param>
