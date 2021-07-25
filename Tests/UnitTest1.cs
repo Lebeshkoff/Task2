@@ -25,9 +25,11 @@ namespace Tests
             trailer.LoadCargo(goods1);
             trailer.LoadCargo(goods2);
             truck.HookTrailer(trailer);
-            xml.Serialize(truck);
+            var com = new CompanyController();
+            com.semitrailers.Add(trailer);
+            com.trucks.Add(truck);
+            xml.Serialize(com);
             var f = XMLDeserializer.DeserialiseObject("xml.xml");
-            f.ToString();
             //XMLDeserializer.DeserialiseObject("xml.xml");
             //var a = XmlReader.Create("xml.xml");
             //while(a.Read())

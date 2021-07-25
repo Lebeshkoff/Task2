@@ -3,6 +3,7 @@ using System.Xml;
 using CargoTransportLib.Trucks;
 using CargoTransportLib.Trailers;
 using System.Collections.Generic;
+using CompanyLib;
 
 namespace Deserializer
 {
@@ -16,6 +17,12 @@ namespace Deserializer
             }            
             while (xmlReader.Read())
             {
+                if(xmlReader.Name == "Company")
+                {
+                    var company = new CompanyController();
+                    company.Deserialize(xmlReader);
+                    return company;
+                }
                 if (xmlReader.Name == "Truck")
                 {
                     switch (xmlReader.GetAttribute(0))
