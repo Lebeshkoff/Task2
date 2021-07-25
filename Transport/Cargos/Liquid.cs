@@ -73,5 +73,23 @@ namespace CargoTransportLib.Cargos
             xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj as Liquid == null) return false;
+            return type == ((Liquid)obj).type &&
+                Weight == ((Liquid)obj).Weight;
+        }
+
+        public override int GetHashCode()
+        {
+            return type.GetHashCode() ^ Weight.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "Goods {Type: " + type + " Weight: " + Weight + " }";
+        }
     }
 }

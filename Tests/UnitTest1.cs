@@ -6,7 +6,6 @@ using CargoTransportLib.Trucks;
 using CompanyLib;
 using Serializer;
 using Deserializer;
-using System.Xml;
 
 namespace Tests
 {
@@ -30,13 +29,10 @@ namespace Tests
             com.trucks.Add(truck);
             xml.Serialize(com);
             var f = XMLDeserializer.DeserialiseObject("xml.xml");
-            //XMLDeserializer.DeserialiseObject("xml.xml");
-            //var a = XmlReader.Create("xml.xml");
-            //while(a.Read())
-            //{
-            //    var d = a.Name;
-            //    var f = a.LocalName;
-            //}
+            if(!com.Equals(f))
+            {
+                throw new Exception("f");
+            }
         }
     }
 }

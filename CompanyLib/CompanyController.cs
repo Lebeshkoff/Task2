@@ -157,10 +157,37 @@ namespace CompanyLib
                                 }
                             }
                         }
-                        //semitrailers.Add((Semitrailer)XMLDeserializer.DeserialiseObject("", xmlReader));
                     }
                 }
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj as CompanyController == null) return false;
+            return trucks.Equals(((CompanyController)obj).trucks &&
+                semitrailers.Equals(((CompanyController)obj).semitrailers;
+        }
+
+        public override int GetHashCode()
+        {
+            return semitrailers.GetHashCode() ^ trucks.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            string truckStr = "";
+            string semitrailerStr = "";
+            foreach (var truck in trucks)
+            {
+                truckStr += truck + "\n";
+            }
+            foreach (var semitrailer in semitrailers)
+            {
+                semitrailerStr += semitrailer + "\n";
+            }
+            return "Company {Semitrailers: " + semitrailerStr + " Trucks: " + truckStr + " }";
         }
     }
 }

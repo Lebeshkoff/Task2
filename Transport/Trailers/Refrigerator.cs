@@ -82,5 +82,27 @@ namespace CargoTransportLib.Trailers
                 }
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj as Refrigerator == null) return false;
+            return Type == ((Refrigerator)obj).Type &&
+                Temperature == ((Refrigerator)obj).Temperature &&
+                Weight == ((Refrigerator)obj).Weight &&
+                cargos.Equals(((Refrigerator)obj).cargos) &&
+                carrying == ((Refrigerator)obj).carrying;
+        }
+
+        public override int GetHashCode()
+        {
+            return Type.GetHashCode() ^ Temperature.GetHashCode() ^
+                Weight.GetHashCode() ^ carrying.GetHashCode() ^ cargos.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "Refrigerator {Type: " + Type + " Temperature: " + Temperature + "Carrying: " + carrying + " Weight: " + Weight + " }";
+        }
     }
 }

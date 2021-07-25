@@ -70,5 +70,26 @@ namespace CargoTransportLib.Trailers
                 }
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj as Tank == null) return false;
+            return Type == ((Tank)obj).Type &&
+                Weight == ((Tank)obj).Weight &&
+                cargos.Equals(((Tank)obj).cargos) &&
+                carrying == ((Tank)obj).carrying;
+        }
+
+        public override int GetHashCode()
+        {
+            return Type.GetHashCode() ^ Weight.GetHashCode() ^ 
+                carrying.GetHashCode() ^ cargos.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "Tank {Type: " + Type + "Carrying: " + carrying + " Weight: " + Weight + " }";
+        }
     }
 }

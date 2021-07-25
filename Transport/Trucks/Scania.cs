@@ -69,5 +69,25 @@ namespace CargoTransportLib.Trucks
             xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj as Scania == null) return false;
+            return Semitrailer == ((Scania)obj).Semitrailer &&
+                Сonsumption == ((Scania)obj).Сonsumption &&
+                Power == ((Scania)obj).Power;
+        }
+
+        public override int GetHashCode()
+        {
+            return Semitrailer.GetHashCode() ^ Сonsumption.GetHashCode() ^
+                Power.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "Scania {Semitrailer: " + Semitrailer + " Сonsumption: " + Сonsumption + "Power: " + Power + " }";
+        }
     }
 }

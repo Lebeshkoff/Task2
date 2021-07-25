@@ -13,7 +13,7 @@ namespace CargoTransportLib.Trucks
     {
         public Semitrailer Semitrailer { get; protected set; }
         public double Сonsumption { get; protected set; }
-        public static int Power { get; protected set; }
+        public int Power { get; protected set; }
 
         public void UpdateConsumption()
         {
