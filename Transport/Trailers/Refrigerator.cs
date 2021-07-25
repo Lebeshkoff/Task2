@@ -52,23 +52,29 @@ namespace CargoTransportLib.Trailers
         {
             while (xmlReader.Read())
             {
-                if (xmlReader.Name == "Goods")
+                if (xmlReader.NodeType != XmlNodeType.EndElement)
                 {
-                    var goods = new Goods();
-                    goods.Deserialize(xmlReader);
-                    cargos.Add(goods);
-                }
-                if (xmlReader.Name == "Weight")
-                {
-                    Weight = int.Parse(xmlReader.Value);
-                }
-                if (xmlReader.Name == "Carrying")
-                {
-                    carrying = int.Parse(xmlReader.Value);
-                }
-                if (xmlReader.Name == "Temperature")
-                {
-                    Temperature = int.Parse(xmlReader.Value);
+                    if (xmlReader.Name == "Goods")
+                    {
+                        var goods = new Goods();
+                        goods.Deserialize(xmlReader);
+                        cargos.Add(goods);
+                    }
+                    if (xmlReader.Name == "Weight")
+                    {
+                        xmlReader.Read();
+                        Weight = int.Parse(xmlReader.Value);
+                    }
+                    if (xmlReader.Name == "Carrying")
+                    {
+                        xmlReader.Read();
+                        carrying = int.Parse(xmlReader.Value);
+                    }
+                    if (xmlReader.Name == "Temperature")
+                    {
+                        xmlReader.Read();
+                        Temperature = int.Parse(xmlReader.Value);
+                    }
                 }
                 if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Semitrailer")
                 {

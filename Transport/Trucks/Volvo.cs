@@ -16,29 +16,34 @@ namespace CargoTransportLib.Trucks
         {
             while (xmlReader.Read())
             {
-                if (xmlReader.Name == "Semitrailer")
+                if (xmlReader.NodeType != XmlNodeType.EndElement)
                 {
-                    switch (xmlReader.GetAttribute(0))
+                    if (xmlReader.Name == "Semitrailer")
                     {
-                        case "Refrigerator":
-                            Semitrailer = new Refrigerator();
-                            Semitrailer.Deserialize(xmlReader);
-                            break;
+                        switch (xmlReader.GetAttribute(0))
+                        {
+                            case "Refrigerator":
+                                Semitrailer = new Refrigerator();
+                                Semitrailer.Deserialize(xmlReader);
+                                break;
 
-                        case "Tank":
-                            Semitrailer = new Tank();
-                            Semitrailer.Deserialize(xmlReader);
-                            break;
+                            case "Tank":
+                                Semitrailer = new Tank();
+                                Semitrailer.Deserialize(xmlReader);
+                                break;
 
+                        }
                     }
-                }
-                if(xmlReader.Name == "Consumption")
-                {
-                    Сonsumption = double.Parse(xmlReader.Value);
-                }
-                if(xmlReader.Name == "Power")
-                {
-                    Power = int.Parse(xmlReader.Value);
+                    if (xmlReader.Name == "Consumption")
+                    {
+                        xmlReader.Read();
+                        Сonsumption = double.Parse(xmlReader.Value.Replace(".",","));
+                    }
+                    if (xmlReader.Name == "Power")
+                    {
+                        xmlReader.Read();
+                        Power = int.Parse(xmlReader.Value);
+                    }
                 }
                 if(xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Truck")
                 {

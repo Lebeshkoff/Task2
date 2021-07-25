@@ -22,33 +22,38 @@ namespace CargoTransportLib.Cargos
         {
             while (xmlReader.Read())
             {
-                if (xmlReader.Name == "Type")
+                if (xmlReader.NodeType != XmlNodeType.EndElement)
                 {
-                    switch (xmlReader.Value)
+                    if (xmlReader.Name == "Type")
                     {
-                        case "Oil":
-                            type = LiquidType.Oil;
-                            break;
-                        case "Petrol92":
-                            type = LiquidType.Petrol92;
-                            break;
-                        case "Petrol95":
-                            type = LiquidType.Petrol95;
-                            break;
-                        case "Petrol100":
-                            type = LiquidType.Petrol100;
-                            break;
-                        case "PetrolE85":
-                            type = LiquidType.PetrolE85;
-                            break;
-                        case "Diesel":
-                            type = LiquidType.Diesel;
-                            break;
+                        xmlReader.Read();
+                        switch (xmlReader.Value)
+                        {
+                            case "Oil":
+                                type = LiquidType.Oil;
+                                break;
+                            case "Petrol92":
+                                type = LiquidType.Petrol92;
+                                break;
+                            case "Petrol95":
+                                type = LiquidType.Petrol95;
+                                break;
+                            case "Petrol100":
+                                type = LiquidType.Petrol100;
+                                break;
+                            case "PetrolE85":
+                                type = LiquidType.PetrolE85;
+                                break;
+                            case "Diesel":
+                                type = LiquidType.Diesel;
+                                break;
+                        }
                     }
-                }
-                if (xmlReader.Name == "Weight")
-                {
-                    Weight = int.Parse(xmlReader.Value);
+                    if (xmlReader.Name == "Weight")
+                    {
+                        xmlReader.Read();
+                        Weight = int.Parse(xmlReader.Value);
+                    }
                 }
                 if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Liquid")
                 {

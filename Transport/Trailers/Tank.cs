@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
-    public class Tank : Semitrailer , ILiquid
+    public class Tank : Semitrailer, ILiquid
     {
         public LiquidType Type { get; set; }
 
@@ -45,19 +45,24 @@ namespace CargoTransportLib.Trailers
         {
             while (xmlReader.Read())
             {
-                if (xmlReader.Name == "Liquid")
+                if (xmlReader.NodeType != XmlNodeType.EndElement)
                 {
-                    var liquid = new Liquid();
-                    liquid.Deserialize(xmlReader);
-                    cargos.Add(liquid);
-                }
-                if (xmlReader.Name == "Weight")
-                {
-                    Weight = int.Parse(xmlReader.Value);
-                }
-                if (xmlReader.Name == "Carrying")
-                {
-                    carrying = int.Parse(xmlReader.Value);
+                    if (xmlReader.Name == "Liquid")
+                    {
+                        var liquid = new Liquid();
+                        liquid.Deserialize(xmlReader);
+                        cargos.Add(liquid);
+                    }
+                    if (xmlReader.Name == "Weight")
+                    {
+                        xmlReader.Read();
+                        Weight = int.Parse(xmlReader.Value);
+                    }
+                    if (xmlReader.Name == "Carrying")
+                    {
+                        xmlReader.Read();
+                        carrying = int.Parse(xmlReader.Value);
+                    }
                 }
                 if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Semitrailer")
                 {

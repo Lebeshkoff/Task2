@@ -24,32 +24,39 @@ namespace CargoTransportLib.Cargos
         {
             while (xmlReader.Read())
             {
-                if (xmlReader.Name == "Type")
+                if (xmlReader.NodeType != XmlNodeType.EndElement)
                 {
-                    switch(xmlReader.Value)
+                    if (xmlReader.Name == "Type")
                     {
-                        case "Eat":
-                            type = GoodsType.Eat;
-                            break;
-                        case "Chemistry":
-                            type = GoodsType.Chemistry;
-                            break;
-                        case "Technique":
-                            type = GoodsType.Technique;
-                            break;
+                        xmlReader.Read();
+                        switch (xmlReader.Value)
+                        {
+                            case "Eat":
+                                type = GoodsType.Eat;
+                                break;
+                            case "Chemistry":
+                                type = GoodsType.Chemistry;
+                                break;
+                            case "Technique":
+                                type = GoodsType.Technique;
+                                break;
+                        }
                     }
-                }
-                if (xmlReader.Name == "Name")
-                {
-                    name = xmlReader.Value;
-                }
-                if (xmlReader.Name == "StorageTemperature")
-                {
-                    StorageTemperature = int.Parse(xmlReader.Value);
-                }
-                if (xmlReader.Name == "Weight")
-                {
-                    Weight = int.Parse(xmlReader.Value);
+                    if (xmlReader.Name == "Name")
+                    {
+                        xmlReader.Read();
+                        name = xmlReader.Value;
+                    }
+                    if (xmlReader.Name == "StorageTemperature")
+                    {
+                        xmlReader.Read();
+                        StorageTemperature = int.Parse(xmlReader.Value);
+                    }
+                    if (xmlReader.Name == "Weight")
+                    {
+                        xmlReader.Read();
+                        Weight = int.Parse(xmlReader.Value);
+                    }
                 }
                 if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "Goods")
                 {

@@ -45,11 +45,6 @@ namespace Deserializer
                             var tank = new Tank();
                             tank.Deserialize(xmlReader);
                             return tank;
-
-                        case "Titl":
-                            var titl = new Titl();
-                            titl.Deserialize(xmlReader);
-                            return titl;
                     }
                 }
             }
