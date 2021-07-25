@@ -7,10 +7,26 @@ using System.Xml;
 
 namespace CargoTransportLib.Cargos
 {
+    /// <summary>
+    /// Class who describes solid cargos
+    /// </summary>
     public class Goods : Cargo
     {
+        /// <summary>
+        /// Type of goods
+        /// </summary>
         public GoodsType type;
+        /// <summary>
+        /// Name of goods
+        /// </summary>
         public string name;
+        /// <summary>
+        /// Creates goods with given parameters
+        /// </summary>
+        /// <param name="type">Type of goods</param>
+        /// <param name="storageTemperature">Storage temperature</param>
+        /// <param name="weight">Weight of goods</param>
+        /// <param name="name">Name of goods</param>
         public Goods(GoodsType type, int storageTemperature, int weight, string name)
         {
             this.type = type;

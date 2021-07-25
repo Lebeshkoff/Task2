@@ -1,5 +1,8 @@
 ﻿namespace CargoTransportLib.Cargos
 {
+    /// <summary>
+    /// Describes liquids type
+    /// </summary>
     public enum LiquidType
     {
         Oil,

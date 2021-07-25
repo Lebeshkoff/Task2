@@ -8,24 +8,51 @@ using System.Xml;
 
 namespace CompanyLib
 {
+    /// <summary>
+    /// Class who controll all operations with trailers and truck
+    /// </summary>
     public class CompanyController : ISerializer
     {
+        /// <summary>
+        /// Trucks
+        /// </summary>
         public List<Truck> trucks = new List<Truck>();
+        /// <summary>
+        /// Semitrailers
+        /// </summary>
         public List<Semitrailer> semitrailers = new List<Semitrailer>();
 
         public CompanyController() { }
 
+        /// <summary>
+        /// Loaв trailer which the trailer is attached
+        /// </summary>
+        /// <param name="truck">Truck</param>
+        /// <param name="cargo">Cargo</param>
         public static void LoadTrailerWithTruck(Truck truck, Cargo cargo)
         {
-            truck.Semitrailer.LoadCargo(cargo);
-            truck.UpdateConsumption();
+            if (truck.Semitrailer != null)
+            {
+                truck.Semitrailer.LoadCargo(cargo);
+                truck.UpdateConsumption();
+            }
+            else throw new Exception("Truck without trailer");
         }
 
+        /// <summary>
+        /// Get list of truck
+        /// </summary>
+        /// <returns>Returns list of trucks</returns>
         public List<Truck> GetTrucks()
         {
             return trucks;
         }
 
+        /// <summary>
+        /// Getting trailers of a given type
+        /// </summary>
+        /// <typeparam name="T">Ензу</typeparam>
+        /// <returns>Еrailers of a given type</returns>
         public List<T> GetTrailer<T>()
             where T : Semitrailer
         {
@@ -40,6 +67,12 @@ namespace CompanyLib
             return results;
         }
 
+        /// <summary>
+        /// Getting the same trailers
+        /// </summary>
+        /// <typeparam name="T">Type</typeparam>
+        /// <param name="carrying">Carrying</param>
+        /// <returns>List of same trailer</returns>
         public List<T> GetSameTrailer<T>(int carrying)
             where T : Semitrailer
         {
@@ -47,6 +80,10 @@ namespace CompanyLib
             return results.FindAll(x => x.carrying == carrying);
         }
 
+        /// <summary>
+        /// Receiving trucks with trailers in which the same type of cargo
+        /// </summary>
+        /// <typeparam name="T">Type</typeparam>
         public List<Truck> GetTrucksWithTrailerByTypeOfCargos<T>()
         {
             var results = new List<Truck>();
@@ -60,6 +97,9 @@ namespace CompanyLib
             return results;
         }
 
+        /// <summary>
+        /// Receiving trucks with trailers that can be loaded
+        /// </summary>
         public List<Truck> GetTrucksWithTrailerWhoMayLoad()
         {
             var results = new List<Truck>();
@@ -73,6 +113,10 @@ namespace CompanyLib
             return results;
         }
 
+        /// <summary>
+        /// Receiving trucks with trailers that empty
+        /// </summary>
+        /// <returns></returns>
         public List<Truck> GetTrucksWithEmptyTrailer()
         {
             var results = new List<Truck>();
@@ -166,8 +210,8 @@ namespace CompanyLib
         {
             if (obj == null) return false;
             if (obj as CompanyController == null) return false;
-            return trucks.Equals(((CompanyController)obj).trucks &&
-                semitrailers.Equals(((CompanyController)obj).semitrailers;
+            return trucks.Equals(((CompanyController)obj).trucks) &&
+                semitrailers.Equals(((CompanyController)obj).semitrailers);
         }
 
         public override int GetHashCode()

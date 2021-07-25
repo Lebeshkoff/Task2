@@ -8,12 +8,28 @@ using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
+    /// <summary>
+    /// Class who describes semitrailer
+    /// </summary>
     public abstract class Semitrailer : ISerializer
     {
+        /// <summary>
+        /// Weight which trailer can carry
+        /// </summary>
         public int carrying;
+        /// <summary>
+        /// Weight all of the trailer
+        /// </summary>
         public int Weight { get; protected set; }
+        /// <summary>
+        /// List of cargos
+        /// </summary>
         public List<Cargo> cargos = new List<Cargo>();
 
+        /// <summary>
+        /// Method for load cargo into trailer
+        /// </summary>
+        /// <param name="cargo">Cargo</param>
         public virtual void LoadCargo(Cargo cargo)
         {
             if (cargos.Count == 0)
@@ -63,6 +79,10 @@ namespace CargoTransportLib.Trailers
             }
         }
 
+        /// <summary>
+        /// Method for unload cargo or part of cargo
+        /// </summary>
+        /// <param name="cargo">Cargo who will unload</param>
         public void UnloadCargo(Cargo cargo)
         {
             if (cargos.Exists(x => x.GetType() == cargo.GetType()))

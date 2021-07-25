@@ -9,8 +9,15 @@ namespace CargoTransportLib.Cargos
 {
     public class Liquid : Cargo
     {
+        /// <summary>
+        /// Type of liquid
+        /// </summary>
         public LiquidType type;
-
+        /// <summary>
+        /// Create liquid with given parameters
+        /// </summary>
+        /// <param name="type">Type of liquid</param>
+        /// <param name="weight">Weight</param>
         public Liquid(LiquidType type, int weight)
         {
             Weight = weight;

@@ -5,16 +5,28 @@ using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
+    /// <summary>
+    /// Trailer for solid goods who needs coold air
+    /// </summary>
     public class Refrigerator : Semitrailer , IChilled
     {
+        /// <summary>
+        /// Temperature in trailer
+        /// </summary>
         public int Temperature { get; set; }
+        /// <summary>
+        /// Type of goods
+        /// </summary>
         public GoodsType Type { get; set; }
-
+        
+        /// <summary>
+        /// Create new trailer with given carrying
+        /// </summary>
+        /// <param name="carrying">Weight which trailer can carry</param>
         public Refrigerator(int carrying = 0)
         {
             this.carrying = carrying;
         }
-
 
         public override void LoadCargo(Cargo cargo)
         {

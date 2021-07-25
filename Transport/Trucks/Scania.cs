@@ -5,8 +5,15 @@ using CargoTransportLib.Trailers;
 
 namespace CargoTransportLib.Trucks
 {
+    /// <summary>
+    /// Scania truck
+    /// </summary>
     public class Scania : Truck
     {
+        /// <summary>
+        /// Create new scania truck
+        /// </summary>
+        /// <param name="power">Weight whick truck can carry</param>
         public Scania(int power = 0)
         {
             Power = power;

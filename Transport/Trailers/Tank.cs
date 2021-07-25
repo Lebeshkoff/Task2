@@ -8,10 +8,20 @@ using System.Xml;
 
 namespace CargoTransportLib.Trailers
 {
+    /// <summary>
+    /// Class Tank trailer
+    /// </summary>
     public class Tank : Semitrailer, ILiquid
     {
+        /// <summary>
+        /// Type of liquid
+        /// </summary>
         public LiquidType Type { get; set; }
 
+        /// <summary>
+        /// Create new tank trailer
+        /// </summary>
+        /// <param name="carrying">Capasity of tank</param>
         public Tank(int carrying = 0)
         {
             this.carrying = carrying;
